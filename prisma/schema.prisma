@@ -532,7 +532,7 @@ model GuestFormTemplate {
   //   date | time | yes-no | phone
   fields      String                @default("[]")
   // JSON object of host-authored translations, keyed by locale code
-  // (ru|de|fr|es). Shape: { "<locale>": { name?: string, fields?:
+  // (ru|de|fr|es|nl). Shape: { "<locale>": { name?: string, fields?:
   //   { "<fieldId>": { label?, helpText?, options?: string[] } } } }.
   // Empty {} = English-only (the default); English itself lives in
   //   `name` / `fields`. See src/lib/guest-form-i18n.ts.

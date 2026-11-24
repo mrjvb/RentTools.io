@@ -89,9 +89,20 @@ This change makes TypeScript flag every `Record<Locale, ...>` block in the codeb
 
 ### 2d. `src/components/locale-switcher.tsx`
 
-Add an inline SVG flag component for the new locale (copy the pattern from `FlagRU` / `FlagGB`), update the `FlagFor` switch, append an `OPTIONS` entry with the locale code, short label (e.g., `"DE"`), and full label (e.g., `"Deutsch"`), and append the locale code to `LOCALE_PREFIXES_CLIENT`.
+Add an inline SVG flag component for the new locale (copy the pattern from `FlagRU` / `FlagGB`), update the `FlagFor` switch, append an `OPTIONS` entry with the locale code, short label (e.g., `"DE"`), and full label (e.g., `"Deutsch"`). URL swapping goes through `swapLocaleInPath()` in `src/lib/i18n/alternates.ts`, so there is no separate client-side prefix list to update.
 
 Why an inline SVG and not a flag emoji: Windows desktop browsers render regional indicator characters as plain letters (`🇬🇧` shows as `GB`) because Windows doesn't ship a flag-capable emoji font. SVGs sidestep the OS font fallback entirely.
+
+### 2e. Other locale lists
+
+These aren't all caught by the typechecker, so update them by hand:
+
+- `src/lib/i18n/locale-tags.ts` — `OG_LOCALE` (`xx_XX`) and `BCP47_TAG` (`xx-XX`). These *are* typed `Record<Locale, …>`, so tsc will flag them.
+- `src/lib/guest-form-i18n.ts` — `GUEST_FORM_LOCALES`, `TRANSLATABLE_LOCALES` and `LOCALE_NATIVE_NAME` (plain arrays, **not** type-checked against `Locale`).
+- Tests that iterate over every locale: `src/lib/blog-api-client.test.ts` (locale list + expected row count), `src/components/calendar/overview-layout.test.tsx`, `overview-localization.test.tsx` and `claim-source-notice.test.tsx`.
+- Comment in `prisma/schema.prisma` on `GuestFormTemplate.i18n`.
+
+Note that `scripts/publish-blog-api.mjs` reads `SUPPORTED_LOCALES` and refuses to publish a post unless every locale's `.md` file exists. Once the locale is added, every new blog post needs a translation in it (see Step 5).
 
 ---
 
@@ -153,7 +164,7 @@ If you want the agent to skip the new locale temporarily (e.g., translation queu
 
 ## Step 6 — Decide on `/privacy` and `/terms`
 
-These pages are deliberately default-locale-only until you have legal-reviewed translations. The middleware's `LOCALIZABLE_PATHS` constant excludes them, so `/<locale>/privacy` 301-redirects to `/privacy`.
+These pages are only localized for locales that have a reviewed translation of the legal copy. That set is `LEGAL_LOCALES`, which lives in both `src/middleware.ts` and `src/lib/i18n/alternates.ts`. For every other locale, `/<locale>/privacy` redirects to `/privacy`.
 
 Two paths forward:
 
@@ -161,12 +172,18 @@ Two paths forward:
 
 **Path B — translate with legal review.** Pay a lawyer fluent in the target jurisdiction's consumer law to review the translation. Once the legal-reviewed translated copy is in hand:
 
-1. Add `/privacy` and `/terms` back to `LOCALIZABLE_PATHS` in `src/middleware.ts`.
-2. In `app/sitemap.ts`, change their `localized: false` flag to `true`.
-3. Convert each page's static `metadata` in `app/privacy/page.tsx` + `app/terms/page.tsx` to a `generateMetadata()` that reads `getLocale()` and emits per-locale content + `localizedAlternates`.
-4. Render the body content per-locale (use the same `Record<Locale, …>` pattern as the marketing pages).
+1. Append the locale to `LEGAL_LOCALES` in **both** `src/middleware.ts` and `src/lib/i18n/alternates.ts`. That one change localizes the routing, the sitemap entries (`app/sitemap.ts` reads `LEGAL_LOCALES`), the hreflang alternates and `localePath()`.
+2. Add a `<page>-<locale>.tsx` body component next to `app/privacy/page.tsx` and `app/terms/page.tsx` (see `privacy-nl.tsx` / `terms-nl.tsx`). Then render it from the page, and add the locale's title/description to `generateMetadata()`.
+3. Start the translated body with a notice that the English version prevails if the two differ.
 
 Either way, document the decision in this file when you do it, so the next person knows whether the legal text is canonical EN-only or per-locale.
+
+### Decision log
+
+| Locale | Decision | Notes |
+|---|---|---|
+| ru, de, fr, es | EN-only (redirect to `/privacy`, `/terms`) | Decided implicitly when these locales shipped; no banner yet. |
+| nl | Path B — translated (`/nl/privacy`, `/nl/terms`) | Added 2026-11-24. The Dutch translation must be reviewed by the maintainer before it's published. The page notes that the English version prevails if the two differ. |
 
 ---
 
@@ -186,7 +203,7 @@ npm run dev
 #    - Visit /sitemap.xml — search for `<xhtml:link rel="alternate" hreflang="<new-locale>"`
 #    - Visit /<new-locale>/blog/<slug-not-yet-translated> — must 404, not render EN content
 #    - Visit /<new-locale>/dashboard — must redirect to /dashboard (non-localizable path)
-#    - Visit /<new-locale>/privacy — must redirect to /privacy (legal copy is EN-only by design)
+#    - Visit /<new-locale>/privacy — must redirect to /privacy, unless the locale is in LEGAL_LOCALES (Step 6)
 ```
 
 For each marketing page, view source and confirm:
@@ -216,7 +233,8 @@ Hreflang takes ~1–4 weeks to propagate. Don't panic if Day 3 metrics show noth
 
 - [ ] `SUPPORTED_LOCALES` updated in `src/middleware.ts`, `src/lib/i18n/alternates.ts`, `src/lib/i18n/translations.ts`
 - [ ] `Locale` type extended in `src/lib/i18n/translations.ts`
-- [ ] Locale switcher flag SVG + `OPTIONS` entry + `LOCALE_PREFIXES_CLIENT` updated in `src/components/locale-switcher.tsx`
+- [ ] Locale switcher flag SVG + `FlagFor` + `OPTIONS` entry updated in `src/components/locale-switcher.tsx`
+- [ ] `locale-tags.ts`, `guest-form-i18n.ts` and the per-locale test matrices updated (Step 2e)
 - [ ] All marketing-page `Record<Locale, …>` blocks have a value for the new locale (typecheck passes)
 - [ ] Home page `HOME_META`, marketing-header `NAV_COPY`, onboard wizard inline strings, blog index `BLOG_INDEX_COPY`, footer copy all translated
 - [ ] Translation Brief glossary updated with any new locale-specific terms

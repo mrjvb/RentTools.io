@@ -39,6 +39,11 @@ const BLOG_INDEX_COPY: Record<Locale, { title: string; description: string }> = 
     description:
       "Guías prácticas para anfitriones de alquiler vacacional: sincronización de calendarios, prevención de reservas dobles, automatización de limpiezas y RGPD.",
   },
+  nl: {
+    title: "Blog",
+    description:
+      "Praktische gidsen voor hosts van vakantieverhuur: kalendersynchronisatie, dubbele boekingen voorkomen, schoonmaak automatiseren en de AVG.",
+  },
 };
 
 interface CopyShape {
@@ -173,6 +178,28 @@ const COPY: Record<Locale, CopyShape> = {
     footerHome: "Inicio",
     footerPrivacy: "Privacidad",
     footerTerms: "Términos",
+  },
+  nl: {
+    ogLocale: "nl_NL",
+    breadcrumbNav: "Kruimelpad",
+    homeLabel: "Home",
+    homeHref: "/nl",
+    blogLabel: "Blog",
+    heroEyebrow: "De RentTools-blog",
+    heroTitle: "Praktijknotities voor hosts van vakantieverhuur",
+    heroIntro:
+      "Kalendersynchronisatie die echt werkt, schoonmaakautomatisering die je schoonmaker niet dubbel inplant, en een AVG-checklist voor hosts die op één pagina past. Geschreven door mensen die zelf verhuren, niet door affiliatesites.",
+    tagFilterNav: "Filteren op tag",
+    tagAll: "Alle",
+    emptyNoTag: "Nog geen artikelen.",
+    emptyWithTag: (tag) => `Nog geen artikelen met de tag "${tag}".`,
+    featuredBadge: "Uitgelicht",
+    paginationPrev: "← Vorige",
+    paginationLabel: (page, total) => `Pagina ${page} van ${total}`,
+    paginationNext: "Volgende →",
+    footerHome: "Home",
+    footerPrivacy: "Privacy",
+    footerTerms: "Voorwaarden",
   },
 };
 

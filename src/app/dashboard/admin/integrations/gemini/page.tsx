@@ -63,6 +63,14 @@ const COPY: Record<Locale, CopyShape> = {
     saveFailed: "No se pudo guardar",
     apiKeyLabel: "Clave de API:",
   },
+  nl: {
+    description:
+      "Wordt gebruikt om gegevens uit paspoorten van gasten te halen. Opgeslagen in site_settings en geldig voor de hele installatie.",
+    loading: "Laden...",
+    saved: "Opgeslagen",
+    saveFailed: "Opslaan mislukt",
+    apiKeyLabel: "API-sleutel:",
+  },
 };
 
 export default function AdminGeminiPage() {

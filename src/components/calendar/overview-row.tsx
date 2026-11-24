@@ -25,6 +25,7 @@ const COPY: Record<Locale, { calendar: string; openCalendar: string; openReserva
   de: { calendar: "Kalender →", openCalendar: "Objektkalender öffnen", openReservation: "Buchung öffnen", closed: "Gesperrt", overlap: "Überlappende Aufenthalte", unverified: "Synchronisierung fehlgeschlagen. Verfügbarkeit ungeprüft." },
   fr: { calendar: "Calendrier →", openCalendar: "Ouvrir le calendrier du logement", openReservation: "Ouvrir la réservation", closed: "Fermé", overlap: "Séjours superposés", unverified: "Échec de synchronisation. Disponibilité non vérifiée." },
   es: { calendar: "Calendario →", openCalendar: "Abrir el calendario del alojamiento", openReservation: "Abrir reserva", closed: "Cerrado", overlap: "Estancias superpuestas", unverified: "Falló la sincronización. Disponibilidad sin verificar." },
+  nl: { calendar: "Kalender →", openCalendar: "Kalender van de accommodatie openen", openReservation: "Reservering openen", closed: "Gesloten", overlap: "Overlappende verblijven", unverified: "Synchronisatie mislukt. Beschikbaarheid niet gecontroleerd." },
 };
 
 function platformColor(platform: string): string {

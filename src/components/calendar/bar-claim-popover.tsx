@@ -68,6 +68,16 @@ const COPY: Record<Locale, CopyShape> = {
     save: "Guardar",
     saving: "Guardando…",
   },
+  nl: {
+    heading: "Geef deze boeking een naam",
+    body: "Deze boeking komt binnen via iCal. Geef haar een gastnaam, dan verschijnt ze in je lijst.",
+    guestNameLabel: "Naam van de gast",
+    guestNamePlaceholder: "Jan Jansen",
+    defaultGuestFallback: "Gast",
+    cancel: "Annuleren",
+    save: "Opslaan",
+    saving: "Opslaan…",
+  },
 };
 
 export interface ClaimableBar {

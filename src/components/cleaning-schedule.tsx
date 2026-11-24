@@ -89,6 +89,19 @@ const COPY: Record<Locale, CopyShape> = {
     daysCount: (n) => (n === 1 ? "día" : "días"),
     cleaningCta: "Limpieza",
   },
+  nl: {
+    dateLocale: "nl-NL",
+    arriveByLabel: (time) => `snelle schoonmaak, aanwezig om ${time}`,
+    fullDayLabel: "hele dag beschikbaar",
+    manualLabel: "schoonmaak",
+    potentialPrefix: "mogelijk — ",
+    scheduleHeader: "Schoonmaakschema",
+    conflictNoBackup: " (conflict — geen reserve ingesteld)",
+    conflictBackupBusy: (name) => ` (conflict — reserve ${name} is ook bezet)`,
+    conflictBackupSet: (name) => ` (conflict — reserve: ${name})`,
+    daysCount: (n) => (n === 1 ? "dag" : "dagen"),
+    cleaningCta: "Schoonmaak",
+  },
 };
 
 /** RT-25.10 tick 3 — single cleaner assignment slot for a property.

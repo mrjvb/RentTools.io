@@ -67,6 +67,14 @@ const HINT_COPY: Record<Locale, HintCopy> = {
     after:
       ". Una vez configurado, aquí aparecerá un enlace para compartir en cada reserva.",
   },
+  nl: {
+    title: "Tip — formulier vóór aankomst.",
+    before:
+      "Je kunt een gastenformulier instellen (paspoortgegevens, aankomsttijd, vragen) op",
+    link: "de pagina Formulier vóór aankomst",
+    after:
+      ". Zodra het is ingesteld, verschijnt hier voor elke reservering een deelbare link.",
+  },
 };
 
 interface LogEntry {

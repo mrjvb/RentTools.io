@@ -14,6 +14,7 @@ const DAYS_LABEL: Record<Locale, (n: number) => string> = {
   de: (n) => (n === 1 ? "Tag" : "Tage"),
   fr: (n) => (n === 1 ? "jour" : "jours"),
   es: (n) => (n === 1 ? "día" : "días"),
+  nl: (n) => (n === 1 ? "dag" : "dagen"),
 };
 
 export function ConflictBanner({ conflicts }: ConflictBannerProps) {

@@ -6,12 +6,12 @@
 // transparently falls back to English, so a half-translated form is
 // always still usable.
 
-export const GUEST_FORM_LOCALES = ["en", "ru", "de", "fr", "es"] as const;
+export const GUEST_FORM_LOCALES = ["en", "ru", "de", "fr", "es", "nl"] as const;
 export type GuestFormLocale = (typeof GUEST_FORM_LOCALES)[number];
 
 /** Locales the host can translate into — everything except the English
  *  base (which is edited through the normal name / field inputs). */
-export const TRANSLATABLE_LOCALES = ["ru", "de", "fr", "es"] as const;
+export const TRANSLATABLE_LOCALES = ["ru", "de", "fr", "es", "nl"] as const;
 
 /** Native language names, shown in both the builder tabs and the
  *  guest-facing language picker. */
@@ -21,6 +21,7 @@ export const LOCALE_NATIVE_NAME: Record<GuestFormLocale, string> = {
   de: "Deutsch",
   fr: "Français",
   es: "Español",
+  nl: "Nederlands",
 };
 
 export interface FieldTranslation {
@@ -358,6 +359,47 @@ export const GUEST_UI_COPY: Record<GuestFormLocale, GuestUiCopy> = {
       ],
       fullPolicyLabel: "Política de privacidad completa de RentTools",
       sourceLinkLabel: "código fuente en GitHub",
+    },
+  },
+  nl: {
+    greeting: (n) => `Hoi ${n}, wil je voor je verblijf een paar vragen beantwoorden?`,
+    intro: "Wil je voor je verblijf een paar vragen beantwoorden?",
+    titleFallback: "Formulier vóór aankomst",
+    submit: "Versturen",
+    submitting: "Versturen…",
+    thanks: "Bedankt — je antwoorden zijn opgeslagen.",
+    submittedOn: (d) => `Verstuurd op ${d}`,
+    selectPlaceholder: "— kies —",
+    yes: "Ja",
+    no: "Nee",
+    language: "Taal",
+    submitFailed: "Versturen mislukt",
+    privacy: {
+      title: "Privacy en gegevensverwerking",
+      summary:
+        "Wordt gebruikt voor de wettelijk verplichte gastenregistratie en het beheer van je verblijf — niet voor marketing. Identiteitsgegevens worden versleuteld opgeslagen en verstuurd.",
+      showDetails: "Details",
+      hideDetails: "Verbergen",
+      bullets: [
+        {
+          title: "Wie dit ziet",
+          body: "De host en een uitdrukkelijk gemachtigde beheerder van de accommodatie. Schoonmakers en RentTools-support (ook bij meekijken als gebruiker) hebben geen toegang tot je identiteitsgegevens. Niets wordt verkocht of voor advertenties gebruikt.",
+        },
+        {
+          title: "Waar het wordt opgeslagen",
+          body: "Je identiteitsgegevens worden in de applicatie versleuteld voordat ze in de database worden opgeslagen. De verbinding met dit formulier is via HTTPS versleuteld. Geüploade foto's van identiteitsbewijzen maken geen deel uit van dit formulier.",
+        },
+        {
+          title: "Geen tracking",
+          body: "Op deze pagina worden geen analytische of advertentiecookies geladen. Als je een taal of thema kiest, slaat RentTools mogelijk alleen die technische voorkeur op; het beveiligde token in de link koppelt het formulier aan de reservering.",
+        },
+        {
+          title: "Jouw rechten (AVG / UK GDPR)",
+          body: "Je kunt je host altijd vragen je antwoorden te verwijderen, of contact opnemen met de beheerder via support@renttools.io voor privacyvragen, inzageverzoeken of klachten.",
+        },
+      ],
+      fullPolicyLabel: "Lees het volledige privacybeleid van RentTools",
+      sourceLinkLabel: "broncode op GitHub",
     },
   },
 };

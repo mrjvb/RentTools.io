@@ -150,6 +150,24 @@ const COPY: Record<Locale, CopyShape> = {
     on: "Activa",
     off: "Inactiva",
   },
+  nl: {
+    failedToLoad: "Laden mislukt",
+    title: "Accommodaties",
+    subtitle: "Overzicht van de belangrijkste instellingen van elke toegankelijke accommodatie. Bewerk de instellingen op het tabblad Synchronisatie van elke accommodatie.",
+    loading: "Laden...",
+    empty: "Nog geen toegankelijke accommodaties.",
+    hPropery: "Accommodatie",
+    hRole: "Rol",
+    hBookings: "Boekingen",
+    hMinNights: "Min. nachten",
+    hCheckInOut: "Check-in / -out",
+    hWindow: "Venster (d)",
+    hCleaning: "Schoonmaak",
+    owner: "Eigenaar",
+    manager: "Beheerder",
+    on: "Aan",
+    off: "Uit",
+  },
 };
 
 export default function AdminPropertiesPage() {

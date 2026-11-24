@@ -27,6 +27,10 @@ const RESET_COPY: Record<Locale, { title: string; description: string }> = {
     title: "Restablecer contraseña",
     description: "Restablezca la contraseña de su cuenta RentTools con un código enviado a su correo.",
   },
+  nl: {
+    title: "Wachtwoord herstellen",
+    description: "Herstel het wachtwoord van je RentTools-account met een code die we naar je e-mail sturen.",
+  },
 };
 
 export async function generateMetadata(): Promise<Metadata> {

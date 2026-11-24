@@ -21,6 +21,7 @@ export const OG_LOCALE: Record<Locale, string> = {
   de: "de_DE",
   fr: "fr_FR",
   es: "es_ES",
+  nl: "nl_NL",
 };
 
 export function toOgLocale(locale: Locale): string {
@@ -38,6 +39,7 @@ export const BCP47_TAG: Record<Locale, string> = {
   de: "de-DE",
   fr: "fr-FR",
   es: "es-ES",
+  nl: "nl-NL",
 };
 
 export function toBcp47(locale: Locale): string {

@@ -225,6 +225,43 @@ const COPY: Record<Locale, CopyShape> = {
     adding: "Añadiendo...",
     addOverrideButton: "Añadir override",
   },
+  nl: {
+    title: "SEO-overschrijvingen",
+    description:
+      "Overschrijvingen per pagina voor titel, beschrijving, OG-afbeelding en canonical URL. Lege velden houden de standaardwaarden van de pagina aan.",
+    loading: "Laden...",
+    notSuperadmin: "Alleen superadmins kunnen SEO-overschrijvingen bewerken.",
+    existingHeader: "Bestaand",
+    refreshing: "Vernieuwen...",
+    refresh: "Vernieuwen",
+    loadFailed: (status) => `SEO-overschrijvingen laden mislukt (${status})`,
+    loadFailedShort: "SEO-overschrijvingen laden mislukt",
+    empty:
+      "Nog geen overschrijvingen per pagina. Voeg er hieronder een toe om de standaardtitel, -beschrijving of -OG-afbeelding van de pagina te overschrijven.",
+    noTitleOverride: "(geen titeloverschrijving)",
+    titleLabel: "Titel (leeg laten voor de standaardtitel van de pagina)",
+    descriptionLabel: "Beschrijving",
+    ogImageLabel: "Link naar OG-afbeelding",
+    canonicalLabel: "Canonical URL",
+    failedSave: "Opslaan mislukt",
+    saveFailed: "Opslaan mislukt",
+    saved: "Opgeslagen. Binnen 60 s live.",
+    failedDelete: "Verwijderen mislukt",
+    failedCreate: "Aanmaken mislukt",
+    confirmDelete: (path, l) => `SEO-overschrijving voor ${path} (${l}) verwijderen?`,
+    delete: "Verwijderen",
+    saving: "Opslaan...",
+    save: "Opslaan",
+    addOverrideTitle: "Overschrijving toevoegen",
+    addOverrideDescription:
+      "Het pad is het pad van de URL (bijv. /about). Lege velden houden de standaardwaarden van de pagina aan.",
+    titlePlaceholder: (max) => `Titel (max. ${max} tekens)`,
+    descriptionPlaceholder: (max) => `Beschrijving (max. ${max} tekens)`,
+    ogImagePlaceholder: "Link naar OG-afbeelding",
+    canonicalPlaceholder: "Canonical URL (optioneel)",
+    adding: "Toevoegen...",
+    addOverrideButton: "Overschrijving toevoegen",
+  },
 };
 
 // RT-25.9 tick 13 — SEO overrides sub-route at

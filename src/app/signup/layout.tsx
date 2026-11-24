@@ -34,6 +34,11 @@ const SIGNUP_COPY: Record<Locale, { title: string; description: string }> = {
     description:
       "Cree una cuenta gratuita de RentTools. Sincronice Airbnb y Booking.com, automatice las limpiezas y gestione varios alojamientos desde un único panel.",
   },
+  nl: {
+    title: "Registreren",
+    description:
+      "Maak een gratis RentTools-account aan. Synchroniseer Airbnb en Booking.com, automatiseer de schoonmaak en beheer meerdere accommodaties vanuit één dashboard.",
+  },
 };
 
 // /signup needs its own canonical because the root layout's default

@@ -111,6 +111,21 @@ const COPY: Record<Locale, CopyShape> = {
     expired: "Esta invitación ha caducado.",
     used: "Esta invitación ya ha sido usada por otra persona.",
   },
+  nl: {
+    loading: "Uitnodiging laden…",
+    inviteHeading: "Uitnodiging voor een accommodatie",
+    invitingYou: "nodigt je uit voor het beheer van",
+    scopeBlurb: "Je krijgt volledige beheerrechten — kalender, reserveringen, synchronisatie en schoonmaak. Je kunt de accommodatie niet verwijderen en geen andere beheerders beheren.",
+    accepting: "Accepteren…",
+    accept: "Uitnodiging accepteren",
+    decline: "Afwijzen",
+    alreadyAccepted: "Je hebt deze uitnodiging al geaccepteerd.",
+    openApp: "App openen",
+    notFound: "Uitnodiging niet gevonden.",
+    revoked: "Deze uitnodiging is ingetrokken.",
+    expired: "Deze uitnodiging is verlopen.",
+    used: "Deze uitnodiging is al door iemand anders gebruikt.",
+  },
 };
 
 export default function InvitePage({ params }: { params: Promise<{ token: string }> }) {

@@ -12,6 +12,7 @@ const DIRECT_COPY: Record<Locale, { label: string; connected: (platform: string)
   de: { label: "Direkt", connected: (p) => `Mit ${p} verbunden`, open: "Verlängerungsaktionen öffnen" },
   fr: { label: "Direct", connected: (p) => `Liée à ${p}`, open: "Ouvrir les actions de prolongation" },
   es: { label: "Directa", connected: (p) => `Conectada con ${p}`, open: "Abrir acciones de ampliación" },
+  nl: { label: "Direct", connected: (p) => `Gekoppeld aan ${p}`, open: "Acties voor verlenging openen" },
 };
 
 function platformName(platform: string): string {

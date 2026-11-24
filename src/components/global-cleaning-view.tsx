@@ -83,6 +83,18 @@ const COPY: Record<Locale, CopyShape> = {
     dataSourcesHelper:
       "El calendario se calcula a partir de sus reservas + eventos iCal, deduplicados. El nombre del alojamiento aparece en cada línea al copiar / imprimir.",
   },
+  nl: {
+    emptyState: "Voeg een accommodatie toe om het schoonmaakschema te zien.",
+    cleaning: "Schoonmaak",
+    acrossAllProperties: (count) =>
+      `Voor ${count === 1 ? "je enige accommodatie" : `alle ${count} accommodaties`}`,
+    allPropertiesLabel: (count) => `Alle accommodaties (${count})`,
+    view: "Weergave",
+    potentialHelper: "Schoonmaken die alleen nodig zijn als iemand een gat in de kalender boekt.",
+    dataSources: "Gegevensbronnen",
+    dataSourcesHelper:
+      "Het schema wordt berekend uit je reserveringen + iCal-gebeurtenissen, zonder dubbelingen. Bij kopiëren of afdrukken staat de naam van de accommodatie in elke regel.",
+  },
 };
 
 // Sidebar carries the View toggle (include-potential) + a Data

@@ -56,6 +56,14 @@ const COPY: Record<Locale, SyncHealthCopyShape> = {
     daysAgo: (d) => `hace ${d} ${d === 1 ? "día" : "días"}`,
     syncedPrefix: (label) => `Sincronizado ${label}`,
   },
+  nl: {
+    neverSynced: "Nooit gesynchroniseerd",
+    justNow: "zojuist",
+    minutesAgo: (m) => `${m} min geleden`,
+    hoursAgo: (h) => `${h} u geleden`,
+    daysAgo: (d) => `${d} d geleden`,
+    syncedPrefix: (label) => `Gesynchroniseerd ${label}`,
+  },
 };
 
 export function computeSyncHealth(links: CalendarLink[], locale: Locale): SyncHealth | null {

@@ -42,6 +42,11 @@ const COPY: Record<Locale, CopyShape> = {
     view: "Vista",
     includePotentialHint: "Limpiezas que solo importan si un huésped reserva el hueco intermedio.",
   },
+  nl: {
+    cleaning: "Schoonmaak",
+    view: "Weergave",
+    includePotentialHint: "Schoonmaken die alleen nodig zijn als iemand een gat in de kalender boekt.",
+  },
 };
 
 // View / display options live in the sidebar so they sit alongside the

@@ -148,6 +148,26 @@ const COPY: Record<Locale, CopyShape> = {
     edit: "Editar",
     delete: "Eliminar",
   },
+  nl: {
+    failed: "Mislukt",
+    deleteConfirm: "Deze schoonmaker verwijderen? Alle toewijzingen aan accommodaties worden ook verwijderd.",
+    defaultRank: "standaard",
+    backupRank: (rank) => `reserve ${rank}`,
+    title: "Schoonmakers",
+    subtitle: "Schoonmakerspool op accountniveau. Wijs schoonmakers toe aan accommodaties via het tabblad Schoonmaak van elke accommodatie.",
+    addCleaner: "Schoonmaker toevoegen",
+    namePlaceholder: "Naam",
+    phoneOptionalPlaceholder: "Telefoon (optioneel)",
+    add: "Toevoegen",
+    loading: "Laden…",
+    empty: "Nog geen schoonmakers. Voeg hierboven je eerste toe.",
+    phonePlaceholder: "Telefoon",
+    cancel: "Annuleren",
+    save: "Opslaan",
+    notAssigned: "Aan geen enkele accommodatie toegewezen",
+    edit: "Bewerken",
+    delete: "Verwijderen",
+  },
 };
 
 export default function AdminCleanersPage() {

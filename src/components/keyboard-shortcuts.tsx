@@ -19,6 +19,7 @@ const COPY: Record<Locale, CopyShape> = {
   de: { title: "Tastenkürzel" },
   fr: { title: "Raccourcis clavier" },
   es: { title: "Atajos de teclado" },
+  nl: { title: "Sneltoetsen" },
 };
 
 const SHORTCUTS: Shortcut[] = [
@@ -30,11 +31,12 @@ const SHORTCUTS: Shortcut[] = [
       de: "Tastenkürzel-Übersicht anzeigen",
       fr: "Afficher l’aide des raccourcis",
       es: "Mostrar esta ayuda de atajos",
+      nl: "Dit overzicht met sneltoetsen tonen",
     },
   },
   {
     keys: ["⌘", "K"],
-    description: { en: "Open guest search", ru: "Поиск гостей", de: "Gästesuche öffnen", fr: "Ouvrir la recherche de voyageurs", es: "Abrir búsqueda de huéspedes" },
+    description: { en: "Open guest search", ru: "Поиск гостей", de: "Gästesuche öffnen", fr: "Ouvrir la recherche de voyageurs", es: "Abrir búsqueda de huéspedes", nl: "Gasten zoeken" },
   },
   {
     keys: ["←"],
@@ -44,6 +46,7 @@ const SHORTCUTS: Shortcut[] = [
       de: "Vorheriger Monat (Kalender)",
       fr: "Mois précédent (calendrier)",
       es: "Mes anterior (calendario)",
+      nl: "Vorige maand (kalender)",
     },
   },
   {
@@ -54,11 +57,12 @@ const SHORTCUTS: Shortcut[] = [
       de: "Nächster Monat (Kalender)",
       fr: "Mois suivant (calendrier)",
       es: "Mes siguiente (calendario)",
+      nl: "Volgende maand (kalender)",
     },
   },
   {
     keys: ["T"],
-    description: { en: "Jump to today (calendar)", ru: "К сегодня (календарь)", de: "Zu heute springen (Kalender)", fr: "Aller à aujourd’hui (calendrier)", es: "Ir a hoy (calendario)" },
+    description: { en: "Jump to today (calendar)", ru: "К сегодня (календарь)", de: "Zu heute springen (Kalender)", fr: "Aller à aujourd’hui (calendrier)", es: "Ir a hoy (calendario)", nl: "Naar vandaag (kalender)" },
   },
   {
     keys: ["E"],
@@ -68,11 +72,12 @@ const SHORTCUTS: Shortcut[] = [
       de: "Datums-Bearbeitungsmodus umschalten (Kalender)",
       fr: "Activer le mode Édition des dates (calendrier)",
       es: "Activar el modo Editar fechas (calendario)",
+      nl: "Modus Data bewerken aan/uit (kalender)",
     },
   },
   {
     keys: ["Esc"],
-    description: { en: "Close overlay", ru: "Закрыть окно", de: "Fenster schließen", fr: "Fermer la fenêtre", es: "Cerrar ventana" },
+    description: { en: "Close overlay", ru: "Закрыть окно", de: "Fenster schließen", fr: "Fermer la fenêtre", es: "Cerrar ventana", nl: "Venster sluiten" },
   },
 ];
 

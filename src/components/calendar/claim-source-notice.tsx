@@ -48,6 +48,13 @@ const COPY: Record<Locale, CopyShape> = {
     source: "Calendario de origen",
     noOverlap: "El evento de origen vinculado ya no coincide con esta reserva. Revise el vínculo y las fechas.",
   },
+  nl: {
+    title: "De reserveringsdata wijken af van de bronkalender",
+    explanation: "Beide periodes blijven geblokkeerd in de kalender. Controleer de bronkalender: als je een reservering bewerkt, veranderen de iCal-data niet. De data hieronder zijn check-in → check-out.",
+    reservation: "Reservering",
+    source: "Bronkalender",
+    noOverlap: "De gekoppelde bron overlapt niet meer met deze reservering. Controleer de koppeling en de data.",
+  },
 };
 
 interface ClaimSourceNoticeProps {

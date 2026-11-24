@@ -54,6 +54,14 @@ const COPY: Record<Locale, CopyShape> = {
     selectCleaner: "Seleccionar personal…",
     add: "Añadir",
   },
+  nl: {
+    cleaners: "Schoonmakers",
+    remove: "Verwijderen",
+    noneAssigned: "Nog geen schoonmakers toegewezen.",
+    noneAvailable: "Geen schoonmakersaccounts beschikbaar",
+    selectCleaner: "Kies een schoonmaker…",
+    add: "Toevoegen",
+  },
 };
 
 interface Assignment {

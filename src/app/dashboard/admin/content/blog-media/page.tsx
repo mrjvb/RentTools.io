@@ -95,6 +95,21 @@ const COPY: Record<Locale, CopyShape> = {
     imagesHeader: "Imágenes",
     usedBy: (n) => `Usada en ${n} artículo${n === 1 ? "" : "s"}`,
   },
+  nl: {
+    title: "Blogmedia",
+    description:
+      "Elke externe OG-afbeeldingslink waarnaar een blogartikel verwijst. Direct uploaden komt zodra R2- / S3-opslag is aangesloten (RT-21.x); voorlopig zie je hier wat al aan post.ogImageUrl hangt.",
+    loading: "Laden...",
+    notSuperadmin: "Alleen superadmins kunnen blogmedia bekijken.",
+    imagesLabel: "Afbeeldingen",
+    refreshing: "Vernieuwen...",
+    refresh: "Vernieuwen",
+    loadFailed: (status) => `Blogartikelen laden mislukt (${status})`,
+    loadFailedShort: "Blogartikelen laden mislukt",
+    emptyMedia: "Nog geen artikelen met een OG-afbeelding. Stel er een in via de editor.",
+    imagesHeader: "Afbeeldingen",
+    usedBy: (n) => `Gebruikt door ${n} ${n === 1 ? "artikel" : "artikelen"}`,
+  },
 };
 
 // RT-25.9 tick 20 — Blog media sub-route at

@@ -113,6 +113,20 @@ const COPY: Record<Locale, CopyShape> = {
     pickADayHint: "Haga clic en cualquier fecha del calendario para abrir sus acciones o crear una reserva.",
     today: "Hoy",
   },
+  nl: {
+    weekdays: ["ma", "di", "wo", "do", "vr", "za", "zo"],
+    connectCalendar: "Koppel een kalender",
+    dateLocale: "nl",
+    syncNow: "Nu synchroniseren",
+    syncing: "Synchroniseren…",
+    syncDone: "Kalender bijgewerkt",
+    refreshError: "Het vernieuwen van de kalender is mislukt. De getoonde beschikbaarheid is mogelijk verouderd. Probeer het opnieuw.",
+    syncError: "Een of meer kalenders konden niet synchroniseren. Controleer de kalenderkoppelingen voordat je op deze data vertrouwt.",
+    syncCooldown: (s) => `Synchroniseren kan weer over ${s} s`,
+    pickADay: "Kies een dag",
+    pickADayHint: "Klik op een datum in de kalender om de acties te openen of een reservering aan te maken.",
+    today: "Vandaag",
+  },
 };
 
 interface PropertyCalendarProps {

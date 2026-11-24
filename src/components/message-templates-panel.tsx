@@ -102,6 +102,22 @@ const COPY: Record<Locale, CopyShape> = {
     edit: "Editar",
     remove: "Eliminar",
   },
+  nl: {
+    nameAndBodyRequired: "Naam en tekst zijn verplicht",
+    confirmDelete: "Dit sjabloon verwijderen?",
+    title: "Berichtsjablonen",
+    newTemplate: "Nieuw sjabloon",
+    namePlaceholder: "Naam van het sjabloon",
+    subjectPlaceholder: "Onderwerp (optioneel)",
+    bodyPlaceholder: "Tekst van het bericht",
+    variables: "Variabelen:",
+    preview: "Voorbeeld",
+    cancel: "Annuleren",
+    save: "Opslaan",
+    empty: "Nog geen sjablonen.",
+    edit: "Bewerken",
+    remove: "Verwijderen",
+  },
 };
 
 interface MessageTemplate {

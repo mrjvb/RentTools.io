@@ -83,7 +83,7 @@ describe("claim and source calendar notice", () => {
     expect(renderNotice([{ ...claim, linkedEventRole: null }])).toBe("");
   });
 
-  it.each<Locale>(["en", "ru", "de", "fr", "es"])("provides a readable %s notice", (locale) => {
+  it.each<Locale>(["en", "ru", "de", "fr", "es", "nl"])("provides a readable %s notice", (locale) => {
     const markup = renderNotice([claim], [source], false, locale);
     expect(markup).toContain("Example stay");
     expect(markup).toContain("Booking.com");

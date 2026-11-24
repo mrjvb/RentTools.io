@@ -63,11 +63,22 @@ function FlagES({ className = "" }: { className?: string }) {
   );
 }
 
+function FlagNL({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 16" className={className} aria-hidden="true">
+      <rect width="24" height="16" fill="#FFFFFF" />
+      <rect width="24" height="5.33" y="0" fill="#AE1C28" />
+      <rect width="24" height="5.34" y="10.66" fill="#21468B" />
+    </svg>
+  );
+}
+
 function FlagFor({ code, className }: { code: Locale; className?: string }) {
   if (code === "ru") return <FlagRU className={className} />;
   if (code === "de") return <FlagDE className={className} />;
   if (code === "fr") return <FlagFR className={className} />;
   if (code === "es") return <FlagES className={className} />;
+  if (code === "nl") return <FlagNL className={className} />;
   return <FlagGB className={className} />;
 }
 
@@ -83,6 +94,7 @@ const OPTIONS: LocaleOption[] = [
   { code: "de", short: "DE", label: "Deutsch" },
   { code: "fr", short: "FR", label: "Français" },
   { code: "es", short: "ES", label: "Español" },
+  { code: "nl", short: "NL", label: "Nederlands" },
 ];
 
 interface LocaleSwitcherProps {

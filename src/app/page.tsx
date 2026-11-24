@@ -57,6 +57,12 @@ const HOME_META: Record<Locale, { title: string; description: string }> = {
     description:
       "Gestor de código abierto y gratuito para anfitriones de alquiler vacacional. Sincroniza los calendarios de Airbnb y Booking.com, automatiza la limpieza y extrae datos de pasaportes de huéspedes.",
   },
+  nl: {
+    title:
+      "RentTools — open-source beheertool voor vakantieverhuur",
+    description:
+      "Gratis open-source beheertool voor hosts van vakantieverhuur. Synchroniseer je kalenders van Airbnb en Booking.com, automatiseer de schoonmaak en lees paspoorten van gasten uit.",
+  },
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -760,6 +766,135 @@ const COPY: Record<Locale, CopyBlock> = {
       cookieNoteB: ".",
     },
   },
+  nl: {
+    hero: {
+      eyebrow: "Open source · Voor altijd gratis",
+      titleLead: "Stop met schakelen tussen",
+      titleAccent: "kalendertabbladen",
+      // Informal je/jij throughout — the norm for Dutch host-facing
+      // SaaS (Airbnb NL uses it too). "Host" stays "host": that's the
+      // word Dutch Airbnb hosts use, not "verhuurder".
+      subtitleA: "Synchroniseer kalenders tussen",
+      platforms: "Airbnb, Booking.com, Vrbo",
+      subtitleB: "en elke andere iCal-bron, zodat elk platform de boekingen van de andere ziet —",
+      subtitleC: "dubbele boekingen worden een zeldzaamheid",
+      subtitleD: ". Voor altijd gratis, open source.",
+      cta: "Begin nu — voor altijd gratis",
+      ctaNote: "Geen creditcard. Geen betaald abonnement. Probeer de wizard voordat je je registreert.",
+    },
+    how: {
+      eyebrow: "Zo werkt het",
+      title: "Drie stappen. De meeste hosts zijn binnen zeven minuten klaar.",
+      steps: [
+        {
+          title: "Plak de iCal-links van je platforms",
+          body: "Bij Airbnb vind je die onder Calendar → Sync calendars → Export. Bij Booking.com onder Calendar → Sync calendars. Vrbo heeft er ook een. Plak ze in onze wizard.",
+        },
+        {
+          title: "Je krijgt één samengevoegde feed terug",
+          body: "Eén iCal-link per platform met de boekingen van alle andere platforms, je handmatige blokkades en de bufferdagen voor de schoonmaak. Geen dubbele boekingen.",
+        },
+        {
+          title: "Plak onze link terug in elk platform",
+          body: "Airbnb en Booking.com halen onze feed om de paar uur op. Vanaf dat moment weten hun kalenders van elkaar — en van je handmatige blokkades.",
+        },
+      ],
+      tryWizard: "Probeer de wizard zonder te registreren",
+    },
+    features: {
+      eyebrow: "Gemaakt voor de lastige klussen",
+      titleA: "Alles wat een host nodig heeft.",
+      titleB: "Niets wat je nooit gebruikt.",
+      items: [
+        {
+          title: "Kalendersynchronisatie tussen platforms",
+          body: "Elke 10 minuten halen we de iCal-feed van elk platform op en zetten we die door naar de andere. Airbnb ziet de boekingen van Booking en andersom — dezelfde bescherming als een betaalde channel manager, maar dan gratis en open source.",
+        },
+        {
+          title: "Schoonmaak op de automatische piloot",
+          body: "Bufferdagen die de platforms zelf niet kunnen. Een dagelijkse schoonmaaklijst. Een schoonmakersrol met beperkte toegang tot het dashboard.",
+        },
+        {
+          title: "Dashboard voor meerdere accommodaties",
+          body: "Beheer zoveel adressen als je wilt vanuit één paneel. Wissel met één toetsaanslag. Beheerders en schoonmakers krijgen rollen met precies de juiste rechten.",
+        },
+        {
+          title: "Berichtsjablonen",
+          body: "Sjablonen per accommodatie met variabelen (naam van de gast, check-in, wifi). Kopieer naar het klembord en plak in Airbnb of WhatsApp.",
+        },
+        {
+          title: "Openbare iCal-feed",
+          body: "Elke accommodatie heeft een eigen feedlink. Plak die in Airbnb of Booking en ze nemen je handmatige blokkades automatisch over.",
+        },
+        {
+          title: "Gasten zoeken met Cmd-K",
+          body: "Vind elke eerdere gast, in elke accommodatie, met één sneltoets. Inclusief documentexport als je papierwerk moet inleveren.",
+        },
+      ],
+    },
+    compatible: {
+      label: "Werkt met",
+      footer: "…en elk platform dat een iCal-feed exporteert.",
+    },
+    trust: {
+      open: {
+        title: "Open source",
+        body: "MIT-licentie op GitHub. Lees de code, meld een issue of host het zelf op een droplet van $ 4.",
+        link: "Bekijk op GitHub",
+      },
+      gdpr: {
+        title: "AVG-proof",
+        body: "Eén noodzakelijke sessiecookie. Geen analytics, geen advertenties, geen trackers van derden. Verwijder je account en je gegevens zijn weg.",
+        link: "Privacybeleid",
+      },
+    },
+    faq: {
+      eyebrow: "Snelle antwoorden",
+      title: "De vragen die hosts als eerste stellen.",
+      items: [
+        {
+          q: "Voorkomt dit echt dubbele boekingen?",
+          a: "Het verkleint de kans enorm — niet tot nul, maar wel bijna. We halen de iCal-feed van elk platform elke 10 minuten op en zetten die door naar de andere, dus Airbnb weet binnen ongeveer 10 minuten (aan onze kant) van een boeking op Booking.com, en andersom. De platforms verversen geïmporteerde feeds zelf elke 2 tot 12 uur. Realtime synchronisatie via een API zou sneller zijn, maar Airbnb en Booking.com verkopen hun channel-manager-API's niet aan individuele hosts — alleen aan gecertificeerde PMS-aanbieders die $ 100-300 per maand vragen om dezelfde feeds door te sturen die wij gratis synchroniseren. Voor 99% van de kleine hosts is de iCal-koppeling ruim voldoende.",
+        },
+        {
+          q: "Is het echt gratis?",
+          a: "Ja. De gehoste versie is gratis voor persoonlijk gebruik, met een gebruikslimiet per account zodat de kosten binnen de perken blijven. De code staat onder de MIT-licentie — clone hem, draai hem op een droplet van $ 4 en je bent niemand iets verschuldigd.",
+        },
+        {
+          q: "Wat doet het precies?",
+          a: "Het haalt elke iCal-kalender op — Airbnb, Booking.com, Vrbo of elk ander platform met een exportlink — zodat je niet meer tussen tabbladen hoeft te schakelen. Het voegt bufferdagen voor de schoonmaak toe die de platforms zelf niet kunnen. Het maakt een dagelijkse schoonmaaklijst. Plus berichtsjablonen per accommodatie en gasten zoeken met Cmd-K in al je accommodaties.",
+        },
+        {
+          q: "Moet ik het zelf hosten?",
+          a: "Nee. Registreer je hier en gebruik de gehoste versie. Groei je ooit uit de gratis versie of wil je volledige controle over je gegevens? Exporteer alles en host het zelf. Jouw gegevens, jouw keuze.",
+        },
+        {
+          q: "Waar staan de gegevens van mijn gasten?",
+          a: "In één SQLite-bestand op de gehoste server. Geen externe verwerkers, behalve Google Gemini voor het uitlezen van paspoorten (en alleen voor dat ene verzoek). Verwijder je account en de gegevens zijn weg.",
+        },
+      ],
+    },
+    finalCta: {
+      titleA: "Gemaakt door een host.",
+      titleB: "Voor hosts.",
+      body: "Geen betaald abonnement. Geen upsell. Geen tracking. De maintainer betaalt de hostingkosten, zodat jij je op je gasten kunt richten in plaats van op kalendertabbladen.",
+      primary: "Begin nu — voor altijd gratis",
+      secondary: "Bekijk de broncode",
+    },
+    footer: {
+      copyright: "© 2026 RentTools · MIT-licentie",
+      github: "GitHub",
+      blog: "Blog",
+      changelog: "Wijzigingen",
+      terms: "Voorwaarden",
+      privacy: "Privacy",
+      signIn: "Inloggen",
+      advertise: "Adverteren",
+      cookieNoteA: "Alleen noodzakelijke cookies — geen tracking, geen analytics. Zie ons ",
+      cookieNoteLink: "privacybeleid",
+      cookieNoteB: ".",
+    },
+  },
 };
 
 const FAQ_LD = {
@@ -1027,8 +1162,8 @@ export default async function HomePage() {
               <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--ink)] transition-colors">{t.footer.github}</a>
               <Link href={localePath("/blog", locale)} className="hover:text-[var(--ink)] transition-colors">{t.footer.blog}</Link>
               <Link href={localePath("/changelog", locale)} className="hover:text-[var(--ink)] transition-colors">{t.footer.changelog}</Link>
-              <Link href="/terms" className="hover:text-[var(--ink)] transition-colors">{t.footer.terms}</Link>
-              <Link href="/privacy" className="hover:text-[var(--ink)] transition-colors">{t.footer.privacy}</Link>
+              <Link href={localePath("/terms", locale)} className="hover:text-[var(--ink)] transition-colors">{t.footer.terms}</Link>
+              <Link href={localePath("/privacy", locale)} className="hover:text-[var(--ink)] transition-colors">{t.footer.privacy}</Link>
               <a
                 href="mailto:support@renttools.io?subject=Advertising%20enquiry"
                 className="hover:text-[var(--ink)] transition-colors"
@@ -1044,7 +1179,7 @@ export default async function HomePage() {
             </nav>
           </div>
           <p className="mt-3 text-center text-[11px] text-[var(--ink-4)] sm:text-left">
-            {t.footer.cookieNoteA}<Link href="/privacy" className="underline underline-offset-2 hover:text-[var(--ink-3)]">{t.footer.cookieNoteLink}</Link>{t.footer.cookieNoteB}
+            {t.footer.cookieNoteA}<Link href={localePath("/privacy", locale)} className="underline underline-offset-2 hover:text-[var(--ink-3)]">{t.footer.cookieNoteLink}</Link>{t.footer.cookieNoteB}
           </p>
         </div>
       </footer>

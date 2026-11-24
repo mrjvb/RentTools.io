@@ -117,6 +117,24 @@ const COPY: Record<Locale, CopyShape> = {
     fields: (n) => `${n} campo${n === 1 ? "" : "s"}`,
     submissions: (n) => `${n} respuesta${n === 1 ? "" : "s"}`,
   },
+  nl: {
+    title: "Sjablonen voor gastenformulieren",
+    description:
+      "Alle sjablonen voor formulieren vóór aankomst in je accommodaties. Klik op een accommodatie om de synchronisatie-instellingen te openen, waar je het sjabloon bewerkt.",
+    loadFailed: "Laden mislukt",
+    loading: "Laden...",
+    empty:
+      "Nog geen gastenformulieren ingesteld. Open een accommodatie en maak een sjabloon op het tabblad Synchronisatie-instellingen.",
+    loadingEllipsis: "Laden...",
+    summary: (totalCount, propertyCount, totalSubmissions) =>
+      `${totalCount} ${totalCount === 1 ? "sjabloon" : "sjablonen"} in ${propertyCount} ${
+        propertyCount === 1 ? "accommodatie" : "accommodaties"
+      } · ${totalSubmissions} ${totalSubmissions === 1 ? "inzending" : "inzendingen"}.`,
+    openSync: "Synchronisatie openen",
+    untitled: "Naamloos sjabloon",
+    fields: (n) => `${n} ${n === 1 ? "veld" : "velden"}`,
+    submissions: (n) => `${n} ${n === 1 ? "inzending" : "inzendingen"}`,
+  },
 };
 
 interface TemplateRow {

@@ -55,6 +55,13 @@ const COPY: Record<Locale, CopyShape> = {
     preparing: "Preparando...",
     download: "Descargar JSON",
   },
+  nl: {
+    failedToPrepare: "De export kon niet worden voorbereid",
+    title: "Gegevensexport",
+    subtitle: "Download een JSON-dump van je eigen accommodaties, reserveringen, gasten, kalenderlinks, berichtsjablonen en schoonmaakgegevens. Handig als persoonlijke back-up.",
+    preparing: "Voorbereiden...",
+    download: "JSON downloaden",
+  },
 };
 
 export default function AdminExportPage() {

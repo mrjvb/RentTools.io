@@ -226,6 +226,33 @@ const COPY: Record<Locale, CopyShape> = {
     hubTip:
       "Consejo: conecte cada plataforma a RentTools y desactive los enlaces de calendario que haya creado directamente entre plataformas. Cuando RentTools es el único punto central, cada reserva se cuenta una sola vez — si las plataformas también se sincronizan entre sí, la misma reserva da vueltas en bucle y parece una reserva doble.",
   },
+  nl: {
+    step1Title: "Geef je eerste accommodatie een naam",
+    step1Body:
+      "Gewoon een label voor jezelf — je kunt het later wijzigen. Daarna koppelen we minstens één kalender.",
+    step1Placeholder: "bijv. Appartement aan zee",
+    step1Continue: "Doorgaan →",
+    step1Creating: "Aanmaken…",
+    step1Sample: "Of probeer een voorbeeldaccommodatie →",
+    step2TitlePrefix: "Koppel een kalender aan \"",
+    step2TitleSuffix: "\"",
+    step2Body:
+      "Plak de iCal-exportlink van elk platform waarop je adverteert. Daarna kopieer je onze link terug naar die platforms — we maken de importlink zodra je opslaat.",
+    customFallback: "Eigen platform",
+    customNamePlaceholder: "Naam van het platform",
+    test: "Testen",
+    save: "Opslaan",
+    connected: "Gekoppeld",
+    pasteBackPrefix: "Plak terug in ",
+    pasteBackSuffix: ":",
+    copy: "Kopiëren",
+    copied: "Gekopieerd",
+    addAnotherPlatform: "Nog een platform toevoegen",
+    notListing: "Adverteer je nog nergens?",
+    manualReservationLink: "Voeg dan een handmatige reservering toe →",
+    hubTip:
+      "Tip: koppel elk platform aan RentTools en schakel kalenderkoppelingen uit die je rechtstreeks tussen platforms hebt ingesteld. Als RentTools de enige spil is, telt elke boeking één keer — platforms die onderling gekoppeld zijn laten dezelfde boeking rondgaan, waardoor die op een dubbele boeking lijkt.",
+  },
 };
 
 function clientSlug(raw: string): string {

@@ -20,6 +20,7 @@ const COPY: Record<Locale, CopyShape> = {
   de: { ariaLabel: "Inhaltsverzeichnis", onThisPage: "Auf dieser Seite" },
   fr: { ariaLabel: "Table des matières", onThisPage: "Sur cette page" },
   es: { ariaLabel: "Tabla de contenidos", onThisPage: "En esta página" },
+  nl: { ariaLabel: "Inhoudsopgave", onThisPage: "Op deze pagina" },
 };
 
 /**

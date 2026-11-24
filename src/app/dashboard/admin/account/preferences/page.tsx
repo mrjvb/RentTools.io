@@ -59,6 +59,14 @@ const COPY: Record<Locale, CopyShape> = {
     language: "Idioma de la interfaz",
     languageHint: "Inglés, ruso, alemán, francés o español.",
   },
+  nl: {
+    title: "Taal en thema",
+    subtitle: "Per browser opgeslagen — kies opnieuw op andere apparaten.",
+    theme: "Thema",
+    themeHint: "Licht of donker.",
+    language: "Taal van de interface",
+    languageHint: "Engels, Russisch, Duits, Frans, Spaans of Nederlands.",
+  },
 };
 
 export default function AdminPreferencesPage() {

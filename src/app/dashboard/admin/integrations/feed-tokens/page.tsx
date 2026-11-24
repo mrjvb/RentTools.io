@@ -84,6 +84,19 @@ const COPY: Record<Locale, CopyShape> = {
     publicBadge: "Público",
     openSync: "Abrir Sync →",
   },
+  nl: {
+    title: "Toegangstokens voor feeds",
+    description:
+      "Elke accommodatie heeft een gecombineerde iCal-feedlink. Zonder token is de link openbaar — iedereen met de link kan hem lezen. Met een token wordt de link privé. Dit is een overzicht van de status; tokens vernieuw je op het tabblad Synchronisatie-instellingen van elke accommodatie.",
+    loadFailed: "Laden mislukt",
+    loading: "Laden...",
+    empty: "Nog geen accommodaties. Voeg een accommodatie toe om de iCal-feedlink te krijgen.",
+    publicCountLabel: "Openbare feed: ",
+    gatedCountLabel: "Token ingesteld: ",
+    gatedBadge: "Token ingesteld",
+    publicBadge: "Openbaar",
+    openSync: "Synchronisatie openen →",
+  },
 };
 
 // RT-25.9 tick 18 — Feed access tokens sub-route at

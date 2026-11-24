@@ -48,6 +48,13 @@ const COPY: Record<Locale, CopyShape> = {
     setPasswordHint:
       "Inició sesión con Google. Establezca una contraseña para iniciar sesión también con su correo y contraseña.",
   },
+  nl: {
+    dateLocale: "nl",
+    subtitle: "Persoonlijke gegevens, wachtwoord en activiteit.",
+    setPassword: "Stel een wachtwoord in",
+    setPasswordHint:
+      "Je bent ingelogd met Google. Stel een wachtwoord in om ook met je e-mailadres en wachtwoord te kunnen inloggen.",
+  },
 };
 
 interface ProfileUser {

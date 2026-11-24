@@ -78,4 +78,13 @@ export const OVERVIEW_COPY: Record<Locale, OverviewCopy> = {
     buffer: "Margen de limpieza", unbookable: "Intervalo muy corto", reservationDetails: "Detalles de la reserva", backToOverview: "Volver a todos los calendarios", loadingReservation: "Cargando reserva…",
     reservationUnavailable: "No se pudo cargar esta reserva.", requestFailed: "Error en la solicitud",
   },
+  nl: {
+    title: "Alle kalenders", allProperties: "Alle accommodaties", previousMonth: "Vorige maand", nextMonth: "Volgende maand", month: "Maand", search: "Accommodaties zoeken",
+    datesHint: "Balken lopen van check-in tot check-out. Scroll naar rechts →", updating: "Bijwerken…", unavailable: "De kalender kon niet worden geladen. Beschikbaarheid onbekend.",
+    loading: "Laden…", loadingCalendar: "Kalender laden…", retry: "Opnieuw proberen", noProperties: "Nog geen accommodaties", noPropertiesDescription: "Accommodaties waar je toegang toe hebt, verschijnen hier.",
+    noResults: "Geen accommodaties gevonden", noResultsDescription: "Probeer een andere naam of wis de zoekopdracht.", clearSearch: "Zoekopdracht wissen", emptyMonth: "Geen boekingen of blokkades deze maand.",
+    scrollRegion: "Kalender van de accommodatie, horizontaal scrollen", occupancy: "Bezetting van de accommodatie", property: "Accommodatie", turnoverHint: "Losse balken markeren een gastenwissel. Overlappende verblijven staan op aparte regels.",
+    buffer: "Schoonmaakbuffer", unbookable: "Gat te kort", reservationDetails: "Reserveringsgegevens", backToOverview: "Terug naar alle kalenders", loadingReservation: "Reservering laden…",
+    reservationUnavailable: "Deze reservering kan niet worden geladen.", requestFailed: "Verzoek mislukt",
+  },
 };

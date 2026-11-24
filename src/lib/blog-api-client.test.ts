@@ -12,11 +12,11 @@ afterEach(() => { for (const dir of fixtures.splice(0)) {
   rmSync(dir, { recursive: true, force: true });
 } });
 
-it("publishes five translations through HTTP only, resumes idempotently and refuses unowned existing posts", async () => {
+it("publishes six translations through HTTP only, resumes idempotently and refuses unowned existing posts", async () => {
   const root = mkdtempSync(path.join(tmpdir(), "blog-api-client-")); fixtures.push(root);
   for (const dir of ["content/blog", "public/blog-covers", "src/lib/i18n", "prisma"]) mkdirSync(path.join(root, dir), { recursive: true });
   for (const file of ["src/lib/i18n/alternates.ts", "prisma/seed-blog-posts.ts"]) copyFileSync(file, path.join(root, file));
-  const locales = ["en", "ru", "de", "fr", "es"];
+  const locales = ["en", "ru", "de", "fr", "es", "nl"];
   for (const locale of locales) writeFileSync(path.join(root, "content/blog/synthetic-article" + (locale === "en" ? "" : "." + locale) + ".md"), `---\nslug: synthetic-article\nlocale: ${locale}\ntitle: Synthetic article\nexcerpt: Synthetic description\nstatus: published\nogImageUrl: /blog-covers/synthetic-article.webp\nogImageWidth: 1600\nogImageHeight: 900\ntldr: |\n  - Synthetic summary\n---\n\n## Example\n\nSynthetic content.\n`);
   const cover = await sharp({ create: { width: 1600, height: 900, channels: 3, background: "#eee8dc" } }).webp().toBuffer();
   writeFileSync(path.join(root, "public/blog-covers/synthetic-article.webp"), cover);
@@ -59,8 +59,8 @@ it("publishes five translations through HTTP only, resumes idempotently and refu
   try {
     const preflight = await run(false); expect(preflight.code, preflight.output).toBe(0); expect(mutations).toBe(0);
     const first = await run(true); expect(first.output).not.toContain(token); expect(first.code, first.output).toBe(0);
-    expect(rows).toHaveLength(5); expect(rows.every(r => r.status === "published" && r.translationGroupId === 1)).toBe(true);
-    expect((await run(true)).code).toBe(0); expect(rows).toHaveLength(5);
+    expect(rows).toHaveLength(6); expect(rows.every(r => r.status === "published" && r.translationGroupId === 1)).toBe(true);
+    expect((await run(true)).code).toBe(0); expect(rows).toHaveLength(6);
     rows.push({ id: 42, slug: "synthetic-article", locale: "de", status: "published" });
     const before = mutations;
     expect((await run(true)).code).not.toBe(0); expect(mutations).toBe(before);

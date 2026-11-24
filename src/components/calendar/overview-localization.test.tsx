@@ -15,6 +15,7 @@ describe("overview and reservation wrapper translations", () => {
     ["de", "Alle Kalender", "Unterkünfte suchen", "Zurück zu allen Kalendern", "Buchung wird geladen…"],
     ["fr", "Tous les calendriers", "Rechercher un logement", "Retour à tous les calendriers", "Chargement de la réservation…"],
     ["es", "Todos los calendarios", "Buscar alojamientos", "Volver a todos los calendarios", "Cargando reserva…"],
+    ["nl", "Alle kalenders", "Accommodaties zoeken", "Terug naar alle kalenders", "Reservering laden…"],
   ] as const)("renders overview controls and card loading in %s", (locale: Locale, heading, search, back, loading) => {
     const markup = renderToStaticMarkup(<I18nProvider initialLocale={locale}><CalendarOverview {...props} /></I18nProvider>);
     const card = renderToStaticMarkup(<I18nProvider initialLocale={locale}><OverviewReservation reservationId={1} onClose={noop} onChanged={noop} /></I18nProvider>);

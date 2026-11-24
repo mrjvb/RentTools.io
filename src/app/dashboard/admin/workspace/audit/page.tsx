@@ -68,6 +68,13 @@ const COPY: Record<Locale, CopyShape> = {
     loading: "Cargando...",
     empty: "Aún no hay actividad.",
   },
+  nl: {
+    dateLocale: "nl-NL",
+    title: "Auditlog",
+    subtitle: "Recente acties die aan je sessie gekoppeld zijn. De laatste 50 regels worden bewaard.",
+    loading: "Laden...",
+    empty: "Nog geen activiteit.",
+  },
 };
 
 function summarize(e: AuditEntry): string {

@@ -6,8 +6,14 @@ import type { Locale } from "@/lib/i18n/translations";
 // deliberate: middleware runs in Edge runtime and importing from
 // arbitrary modules is fragile; one extra const to update per new
 // language is cheap.)
-export const SUPPORTED_LOCALES: readonly Locale[] = ["en", "ru", "de", "fr", "es"];
+export const SUPPORTED_LOCALES: readonly Locale[] = ["en", "ru", "de", "fr", "es", "nl"];
 export const DEFAULT_LOCALE: Locale = "en";
+
+// Locales with a reviewed translation of the legal pages (/privacy,
+// /terms). Every other locale is served the English legal copy at the
+// unprefixed URL. Mirrors LEGAL_LOCALES in src/middleware.ts.
+export const LEGAL_PATHS: readonly string[] = ["/privacy", "/terms"];
+export const LEGAL_LOCALES: readonly Locale[] = ["en", "nl"];
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://renttools.io";
 
@@ -36,13 +42,14 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://renttools.io";
 export function localizedAlternates(
   defaultPath: string,
   currentLocale: Locale,
+  locales: readonly Locale[] = SUPPORTED_LOCALES,
 ): { canonical: string; languages: Record<string, string> } {
   const buildPath = (loc: Locale): string => {
     if (loc === DEFAULT_LOCALE) return defaultPath;
     return defaultPath === "/" ? `/${loc}` : `/${loc}${defaultPath}`;
   };
   const languages: Record<string, string> = {};
-  for (const loc of SUPPORTED_LOCALES) {
+  for (const loc of locales) {
     languages[loc] = buildPath(loc);
   }
   languages["x-default"] = defaultPath;
@@ -130,6 +137,9 @@ const NON_LOCALIZED_PATHS = new Set([
 ]);
 export function localePath(defaultPath: string, locale: Locale): string {
   if (locale === DEFAULT_LOCALE) return defaultPath;
+  if (LEGAL_PATHS.includes(defaultPath) && LEGAL_LOCALES.includes(locale)) {
+    return `/${locale}${defaultPath}`;
+  }
   for (const skip of NON_LOCALIZED_PATHS) {
     if (defaultPath === skip || defaultPath.startsWith(`${skip}/`)) {
       return defaultPath;

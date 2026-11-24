@@ -222,7 +222,7 @@ describe("overview row markup", () => {
     expect(markup).toContain("bg-amber-500/10");
   });
 
-  it.each(["en", "ru", "de", "fr", "es"] as const)("shows existing manual cleaning blocks in an otherwise empty %s row", (locale: Locale) => {
+  it.each(["en", "ru", "de", "fr", "es", "nl"] as const)("shows existing manual cleaning blocks in an otherwise empty %s row", (locale: Locale) => {
     const projected: CalendarOverviewProperty = {
       ...overviewProperty(), cleaningEnabled: true, reservations: [], overrides: [{ date: "2026-10-16", type: "cleaning" }],
     };

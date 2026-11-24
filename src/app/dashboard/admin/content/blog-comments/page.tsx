@@ -137,6 +137,28 @@ const COPY: Record<Locale, CopyShape> = {
     hide: "Ocultar",
     delete: "Eliminar",
   },
+  nl: {
+    title: "Blogreacties",
+    description:
+      "Moderatie: verbergen, herstellen of zacht verwijderen. Zacht verwijderde reacties blijven voor de audit in de database staan.",
+    loading: "Laden...",
+    notSuperadmin: "Alleen superadmins kunnen reacties modereren.",
+    statusLabel: "Status",
+    filterAll: "Alle",
+    filterVisible: "Zichtbaar",
+    filterHidden: "Verborgen",
+    filterDeleted: "Verwijderd",
+    refreshing: "Vernieuwen...",
+    refresh: "Vernieuwen",
+    loadFailed: (status) => `Reacties laden mislukt (${status})`,
+    loadFailedShort: "Reacties laden mislukt",
+    commentsCount: (n) => `${n} ${n === 1 ? "reactie" : "reacties"}`,
+    empty: "Geen reacties om te modereren.",
+    confirmDelete: "Deze reactie zacht verwijderen? Ze wordt verborgen, maar blijft bewaard voor de audit.",
+    restore: "Herstellen",
+    hide: "Verbergen",
+    delete: "Verwijderen",
+  },
 };
 
 // RT-25.9 tick 21 — Blog comments sub-route at

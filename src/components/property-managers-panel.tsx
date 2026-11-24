@@ -14,6 +14,7 @@ const COPY: Record<Locale, CopyShape> = {
   de: { dateLocale: "de-DE" },
   fr: { dateLocale: "fr-FR" },
   es: { dateLocale: "es-ES" },
+  nl: { dateLocale: "nl-NL" },
 };
 
 interface Manager {

@@ -184,6 +184,35 @@ const COPY: Record<Locale, CopyShape> = {
       `hasta ${date} · ${nights} ${nights === 1 ? "noche" : "noches"} restantes`,
     inDays: (date, days) => `${date} (en ${days} d)`,
   },
+  nl: {
+    dateLocale: "nl-NL",
+    reservationsCount: (count) => `${count} ${count === 1 ? "reservering" : "reserveringen"}`,
+    reservationsAcross: (resCount, propCount) =>
+      `${resCount} reserveringen verdeeld over ${propCount} ${propCount === 1 ? "accommodatie" : "accommodaties"}`,
+    needsAttention: "Vraagt aandacht",
+    doubleBooking: "Dubbele boeking:",
+    moreCount: (n) => `+ nog ${n}`,
+    cleanerConflict: "Schoonmaakconflict:",
+    moreCountSuffix: (n) => ` + nog ${n}`,
+    openCleaning: "Schoonmaak openen →",
+    noCalendars: "Geen kalenders gekoppeld:",
+    connectCalendars: "Kalenders koppelen",
+    reservationLabel: "Reservering",
+    availableLabel: "Beschikbaar",
+    nextLabel: "Volgende:",
+    noUpcoming: "Geen komende boekingen",
+    bookingsCountShort: "boekingen",
+    minNightsLabel: (n) => `min. ${n} n.`,
+    syncShort: "Sync",
+    searchPlaceholder: "Zoeken op naam van de gast...",
+    foundLabel: "gevonden",
+    currentlyStaying: "Verblijft nu",
+    daysShort: "d",
+    guestShort: "g",
+    untilNightsLeft: (date, nights) =>
+      `tot ${date} · nog ${nights} ${nights === 1 ? "nacht" : "nachten"}`,
+    inDays: (date, days) => `${date} (over ${days} d)`,
+  },
 };
 
 // RT-25.6 tick 2 — bundled platform presets, kept inline rather than

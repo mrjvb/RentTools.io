@@ -218,6 +218,41 @@ const COPY: Record<Locale, CopyShape> = {
     hubNote:
       "Mantenga RentTools como su único punto central. Conecte cada plataforma aquí — y desactive los enlaces de calendario que haya creado directamente entre plataformas (p. ej. Airbnb → Booking). Cuando todas las plataformas se sincronizan solo a través de RentTools, cada reserva se cuenta una vez. Si las plataformas también se sincronizan entre sí, la misma reserva da vueltas en bucle y puede aparecer como una reserva doble.",
   },
+  nl: {
+    save: "Opslaan",
+    cancel: "Annuleren",
+    rename: "Naam wijzigen",
+    platformName: "Naam van het platform",
+    custom: "eigen",
+    remove: "Verwijderen",
+    draftImportHint: "Geef het platform eerst een naam om de importlink te krijgen.",
+    addAnother: "Nog een platform toevoegen",
+    daysShort: (n) => (n !== 1 ? "dagen" : "dag"),
+    nightsShort: (n) => (n !== 1 ? "nachten" : "nacht"),
+    monthsShort: "mnd",
+    feedTokenTitle: "Toegangstoken voor de feed",
+    feedTokenDesc:
+      "Met de feedlink kunnen externe diensten die geen iCal-upload ondersteunen (zoals prijstools, channel managers of je eigen scripts) de gecombineerde kalender van deze accommodatie uitlezen — met alle platforms die je hebt gekoppeld — in iCal-formaat. De meeste hosts hebben dit niet nodig: laat het token leeg om de feed openbaar te houden, of vernieuw het token om de link privé te maken.",
+    feedTokenActiveNote:
+      "Je feedlinks bevatten nu een privétoken. Als je het vernieuwt, werkt de oude link niet meer — plak de nieuwe overal waar hij wordt gebruikt.",
+    feedTokenPublicNote:
+      "Je feedlinks zijn nu openbaar. Voeg een token toe om ze onvindbaar te maken.",
+    makePublic: "Openbaar maken",
+    rotate: "Vernieuwen",
+    generateToken: "Token aanmaken",
+    dangerZone: "Gevarenzone",
+    dangerZoneDesc:
+      "Als je deze accommodatie verwijdert, worden alle reserveringen, gasten, paspoortdocumenten, synchronisatielogs en iCal-links ervan verwijderd. Dit kun je niet ongedaan maken.",
+    confirmDelete: (name) =>
+      `Accommodatie "${name}" verwijderen? Hiermee verwijder je alle reserveringen en bijbehorende gegevens. Dit kun je niet ongedaan maken.`,
+    deleteProperty: "Accommodatie verwijderen",
+    dateLocale: "nl-NL",
+    secCalendars: "Kalenders",
+    secStayRules: "Verblijfsregels",
+    secAccess: "Toegang en delen",
+    hubNote:
+      "Gebruik RentTools als je enige spil. Koppel hier elk platform — en zet kalenderkoppelingen uit die je rechtstreeks tussen platforms hebt ingesteld (bijv. Airbnb → Booking). Als elk platform alleen via RentTools synchroniseert, telt elke boeking één keer. Synchroniseren platforms ook onderling, dan gaat dezelfde boeking rond en kan die opduiken als een spookboeking die dubbel lijkt.",
+  },
 };
 
 interface TestResult {
@@ -262,6 +297,7 @@ export function SyncSettings({ propertyId, propertyName, properties, minNights, 
     en: "The request failed. Check your connection and try again.",
     ru: "Запрос не выполнен. Проверьте подключение и попробуйте ещё раз.",
     es: "La solicitud falló. Comprueba la conexión e inténtalo de nuevo.",
+    nl: "Het verzoek is mislukt. Controleer je verbinding en probeer het opnieuw.",
     de: "Die Anfrage ist fehlgeschlagen. Prüfe die Verbindung und versuche es erneut.",
     fr: "La requête a échoué. Vérifiez la connexion et réessayez.",
   };

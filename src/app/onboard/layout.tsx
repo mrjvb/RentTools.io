@@ -34,6 +34,11 @@ const ONBOARD_COPY: Record<Locale, { title: string; description: string }> = {
     description:
       "Pegue las URL de sus calendarios de Airbnb y Booking.com, obtenga sus URL iCal de sincronización y guárdelas en una cuenta gratuita. No hace falta registrarse para probar.",
   },
+  nl: {
+    title: "Aan de slag — synchroniseer je kalenders in 30 seconden",
+    description:
+      "Plak de kalenderlinks van Airbnb en Booking.com, ontvang je eigen iCal-synclinks en bewaar ze in een gratis account. Om te proberen hoef je je niet te registreren.",
+  },
 };
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
-import { SUPPORTED_LOCALES, DEFAULT_LOCALE, SITE_URL } from "@/lib/i18n/alternates";
+import { SUPPORTED_LOCALES, DEFAULT_LOCALE, LEGAL_LOCALES, SITE_URL } from "@/lib/i18n/alternates";
 import type { Locale } from "@/lib/i18n/translations";
 
 // Force per-request rendering. ISR (revalidate=N) wasn't enough — the
@@ -33,9 +33,12 @@ function localizedUrl(defaultPath: string, locale: Locale): string {
 // the page head and the sitemap and falls back to its own heuristics.
 // `x-default` always points at the default-locale URL (the canonical
 // fallback when Google can't determine the visitor's preference).
-function altLanguages(defaultPath: string): Record<string, string> {
+function altLanguages(
+  defaultPath: string,
+  locales: readonly Locale[] = SUPPORTED_LOCALES,
+): Record<string, string> {
   const result: Record<string, string> = {};
-  for (const loc of SUPPORTED_LOCALES) {
+  for (const loc of locales) {
     result[loc] = localizedUrl(defaultPath, loc);
   }
   result["x-default"] = localizedUrl(defaultPath, DEFAULT_LOCALE);
@@ -91,30 +94,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticLastmod = STATIC_LASTMOD;
 
   // Static marketing surfaces. Each `localized: true` path generates one
-  // entry per supported locale with hreflang siblings; `localized: false`
-  // paths emit a single EN-only entry (used for legal copy that hasn't
-  // been professionally translated — see middleware's LOCALIZABLE_PATHS
-  // for the matching list).
+  // entry per supported locale with hreflang siblings. Legal copy is
+  // only localized for LEGAL_LOCALES (locales with a reviewed
+  // translation — see middleware's LEGAL_LOCALES for the matching list),
+  // so those paths narrow the locale set via `locales`.
   const staticPaths: Array<{
     path: string;
     changeFrequency: "weekly" | "monthly" | "yearly" | "daily";
     priority: number;
     localized: boolean;
+    locales?: readonly Locale[];
   }> = [
     { path: "/", changeFrequency: "weekly", priority: 1.0, localized: true },
     { path: "/onboard", changeFrequency: "monthly", priority: 0.9, localized: true },
     { path: "/blog", changeFrequency: "daily", priority: 0.9, localized: true },
     { path: "/signup", changeFrequency: "monthly", priority: 0.8, localized: true },
     { path: "/login", changeFrequency: "monthly", priority: 0.6, localized: true },
-    { path: "/terms", changeFrequency: "yearly", priority: 0.3, localized: false },
-    { path: "/privacy", changeFrequency: "yearly", priority: 0.3, localized: false },
+    { path: "/terms", changeFrequency: "yearly", priority: 0.3, localized: true, locales: LEGAL_LOCALES },
+    { path: "/privacy", changeFrequency: "yearly", priority: 0.3, localized: true, locales: LEGAL_LOCALES },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = [];
   for (const entry of staticPaths) {
     if (entry.localized) {
-      const languages = altLanguages(entry.path);
-      for (const loc of SUPPORTED_LOCALES) {
+      const locales = entry.locales ?? SUPPORTED_LOCALES;
+      const languages = altLanguages(entry.path, locales);
+      for (const loc of locales) {
         staticEntries.push({
           url: localizedUrl(entry.path, loc),
           lastModified: staticLastmod,

@@ -16,6 +16,7 @@ const COPY: Record<Locale, CopyShape> = {
   de: { saving: "Wird gespeichert…", saved: "Gespeichert" },
   fr: { saving: "Enregistrement…", saved: "Enregistré" },
   es: { saving: "Guardando…", saved: "Guardado" },
+  nl: { saving: "Opslaan…", saved: "Opgeslagen" },
 };
 
 // Age computed dynamically from DOB so it doesn't go stale across years.

@@ -2,41 +2,67 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MarketingHeader } from "@/components/marketing-header";
 import { applySeoOverrides } from "@/lib/seo";
+import { getLocale } from "@/lib/i18n/server";
+import { LEGAL_LOCALES, localePath, localizedAlternates } from "@/lib/i18n/alternates";
+import { toOgLocale } from "@/lib/i18n/locale-tags";
+import type { Locale } from "@/lib/i18n/translations";
+import { PrivacyMainNl } from "./privacy-nl";
 
 const PRIVACY_TITLE = "Privacy Policy";
 const PRIVACY_DESCRIPTION =
   "How RentTools collects, uses, stores, and protects your data — and how to access, export, or delete it.";
 
+// Legal copy is only translated for LEGAL_LOCALES; any other locale
+// (reachable only via the rt-locale cookie on the bare URL) gets EN.
+function legalLocale(locale: Locale): Locale {
+  return LEGAL_LOCALES.includes(locale) ? locale : "en";
+}
+
+const PRIVACY_META_NL = {
+  title: "Privacybeleid",
+  description:
+    "Hoe RentTools je gegevens verzamelt, gebruikt, opslaat en beschermt — en hoe je ze inziet, exporteert of verwijdert.",
+};
+
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = legalLocale(await getLocale());
+  const copy = locale === "nl" ? PRIVACY_META_NL : { title: PRIVACY_TITLE, description: PRIVACY_DESCRIPTION };
+  const alts = localizedAlternates("/privacy", locale, LEGAL_LOCALES);
   const base: Metadata = {
-    title: PRIVACY_TITLE,
-    description: PRIVACY_DESCRIPTION,
-    alternates: { canonical: "/privacy" },
+    title: copy.title,
+    description: copy.description,
+    alternates: alts,
     openGraph: {
       type: "article",
-      title: `${PRIVACY_TITLE} · RentTools`,
-      description: PRIVACY_DESCRIPTION,
-      url: "/privacy",
+      title: `${copy.title} · RentTools`,
+      description: copy.description,
+      url: alts.canonical,
       siteName: "RentTools",
+      locale: toOgLocale(locale),
     },
     twitter: {
       card: "summary_large_image",
-      title: `${PRIVACY_TITLE} · RentTools`,
-      description: PRIVACY_DESCRIPTION,
+      title: `${copy.title} · RentTools`,
+      description: copy.description,
     },
   };
-  return applySeoOverrides(base, "/privacy", "en");
+  return applySeoOverrides(base, "/privacy", locale);
 }
 
 const LAST_UPDATED = "2026-05-05";
 const OPERATOR_NAME = "Ilya Asminkin";
 const OPERATOR_EMAIL = "support@renttools.io";
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const locale = legalLocale(await getLocale());
+  const isNl = locale === "nl";
   return (
     <div className="editorial min-h-screen bg-[var(--bg)] text-[var(--ink)]">
       <MarketingHeader />
 
+      {isNl ? (
+        <PrivacyMainNl lastUpdated={LAST_UPDATED} operatorName={OPERATOR_NAME} operatorEmail={OPERATOR_EMAIL} />
+      ) : (
       <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Privacy Policy</h1>
         <p className="mt-2 text-sm text-[var(--ink-4)]">Last updated: {LAST_UPDATED}</p>
@@ -377,13 +403,14 @@ export default function PrivacyPage() {
           </section>
         </div>
       </main>
+      )}
 
       <footer className="border-t border-[var(--line)]">
         <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-[var(--ink-4)] sm:flex-row sm:px-6">
-          <p>© 2026 RentTools · MIT License</p>
+          <p>{isNl ? "© 2026 RentTools · MIT-licentie" : "© 2026 RentTools · MIT License"}</p>
           <nav className="flex gap-4">
-            <Link href="/" className="hover:text-[var(--ink)]">Home</Link>
-            <Link href="/terms" className="hover:text-[var(--ink)]">Terms</Link>
+            <Link href={localePath("/", locale)} className="hover:text-[var(--ink)]">Home</Link>
+            <Link href={localePath("/terms", locale)} className="hover:text-[var(--ink)]">{isNl ? "Voorwaarden" : "Terms"}</Link>
           </nav>
         </div>
       </footer>

@@ -122,6 +122,24 @@ const COPY: Record<Locale, CopyShape> = {
     close: "Cerrar",
     dateLocale: "es-ES",
   },
+  nl: {
+    direct: "Direct",
+    heading: "Directe verlenging",
+    connectedTo: (platform) => `Gekoppeld aan ${platform}`,
+    body: (platform) =>
+      `Deze nachten zijn rechtstreeks in RentTools toegevoegd aan de ${platform}-reservering.`,
+    openDetails: "Reserveringsgegevens openen",
+    cancelExtension: "Directe verlenging annuleren",
+    confirmHeading: "Dit Direct-segment verwijderen?",
+    confirmBody: (range, platform) =>
+      `${range} en alle gegevens bij dit Direct-segment worden verwijderd. De oorspronkelijke ${platform}-reservering blijft in de kalender staan.`,
+    keepExtension: "Verlenging behouden",
+    removeDirectDates: "Direct-data verwijderen",
+    removing: "Verwijderen…",
+    failed: "De directe verlenging kon niet worden geannuleerd. Probeer het opnieuw.",
+    close: "Sluiten",
+    dateLocale: "nl-NL",
+  },
 };
 
 function platformName(platform: string): string {

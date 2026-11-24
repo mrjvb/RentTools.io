@@ -71,6 +71,14 @@ const COPY: Record<Locale, CopyShape> = {
     dateLocale: "es-ES",
     deleteUser: "Eliminar usuario",
   },
+  nl: {
+    failedToAdd: "Gebruiker toevoegen mislukt",
+    subtitle: "Beheerders en managers van deze installatie. Schoonmakers voeg je per accommodatie toe via de schoonmakerskaarten.",
+    loading: "Laden...",
+    empty: "Nog geen gebruikers.",
+    dateLocale: "nl-NL",
+    deleteUser: "Gebruiker verwijderen",
+  },
 };
 
 export default function AdminUsersPage() {

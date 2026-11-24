@@ -2,40 +2,66 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MarketingHeader } from "@/components/marketing-header";
 import { applySeoOverrides } from "@/lib/seo";
+import { getLocale } from "@/lib/i18n/server";
+import { LEGAL_LOCALES, localePath, localizedAlternates } from "@/lib/i18n/alternates";
+import { toOgLocale } from "@/lib/i18n/locale-tags";
+import type { Locale } from "@/lib/i18n/translations";
+import { TermsMainNl } from "./terms-nl";
 
 const TERMS_TITLE = "Terms of Service";
 const TERMS_DESCRIPTION = "Terms of service for the free hosted instance of RentTools at renttools.io.";
 
+// Legal copy is only translated for LEGAL_LOCALES; any other locale
+// (reachable only via the rt-locale cookie on the bare URL) gets EN.
+function legalLocale(locale: Locale): Locale {
+  return LEGAL_LOCALES.includes(locale) ? locale : "en";
+}
+
+const TERMS_META_NL = {
+  title: "Gebruiksvoorwaarden",
+  description:
+    "Gebruiksvoorwaarden voor de gratis gehoste versie van RentTools op renttools.io.",
+};
+
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = legalLocale(await getLocale());
+  const copy = locale === "nl" ? TERMS_META_NL : { title: TERMS_TITLE, description: TERMS_DESCRIPTION };
+  const alts = localizedAlternates("/terms", locale, LEGAL_LOCALES);
   const base: Metadata = {
-    title: TERMS_TITLE,
-    description: TERMS_DESCRIPTION,
-    alternates: { canonical: "/terms" },
+    title: copy.title,
+    description: copy.description,
+    alternates: alts,
     openGraph: {
       type: "article",
-      title: `${TERMS_TITLE} · RentTools`,
-      description: TERMS_DESCRIPTION,
-      url: "/terms",
+      title: `${copy.title} · RentTools`,
+      description: copy.description,
+      url: alts.canonical,
       siteName: "RentTools",
+      locale: toOgLocale(locale),
     },
     twitter: {
       card: "summary_large_image",
-      title: `${TERMS_TITLE} · RentTools`,
-      description: TERMS_DESCRIPTION,
+      title: `${copy.title} · RentTools`,
+      description: copy.description,
     },
   };
-  return applySeoOverrides(base, "/terms", "en");
+  return applySeoOverrides(base, "/terms", locale);
 }
 
 const LAST_UPDATED = "2026-05-05";
 const OPERATOR_NAME = "Ilya Asminkin";
 const OPERATOR_EMAIL = "support@renttools.io";
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const locale = legalLocale(await getLocale());
+  const isNl = locale === "nl";
   return (
     <div className="editorial min-h-screen bg-[var(--bg)] text-[var(--ink)]">
       <MarketingHeader />
 
+      {isNl ? (
+        <TermsMainNl lastUpdated={LAST_UPDATED} operatorName={OPERATOR_NAME} operatorEmail={OPERATOR_EMAIL} />
+      ) : (
       <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Terms of Service</h1>
         <p className="mt-2 text-sm text-[var(--ink-4)]">Last updated: {LAST_UPDATED}</p>
@@ -309,13 +335,14 @@ export default function TermsPage() {
           </section>
         </div>
       </main>
+      )}
 
       <footer className="border-t border-[var(--line)]">
         <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-[var(--ink-4)] sm:flex-row sm:px-6">
-          <p>© 2026 RentTools · MIT License</p>
+          <p>{isNl ? "© 2026 RentTools · MIT-licentie" : "© 2026 RentTools · MIT License"}</p>
           <nav className="flex gap-4">
-            <Link href="/" className="hover:text-[var(--ink)]">Home</Link>
-            <Link href="/privacy" className="hover:text-[var(--ink)]">Privacy</Link>
+            <Link href={localePath("/", locale)} className="hover:text-[var(--ink)]">Home</Link>
+            <Link href={localePath("/privacy", locale)} className="hover:text-[var(--ink)]">{isNl ? "Privacy" : "Privacy"}</Link>
           </nav>
         </div>
       </footer>

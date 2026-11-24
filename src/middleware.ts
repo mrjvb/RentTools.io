@@ -28,7 +28,7 @@ const IS_DEFAULT_SECRET = JWT_SECRET_RAW === "fallback-secret-change-me";
 //   1. Append its code to SUPPORTED_LOCALES below.
 //   2. Add the COPY block in each marketing page.
 //   3. Done — no new route files, no middleware changes.
-const SUPPORTED_LOCALES = ["en", "ru", "de", "fr", "es"] as const;
+const SUPPORTED_LOCALES = ["en", "ru", "de", "fr", "es", "nl"] as const;
 const DEFAULT_LOCALE = "en";
 const LOCALE_PREFIXES = SUPPORTED_LOCALES.filter((l) => l !== DEFAULT_LOCALE); // ['ru'] today
 
@@ -37,13 +37,16 @@ const LOCALE_PREFIXES = SUPPORTED_LOCALES.filter((l) => l !== DEFAULT_LOCALE); /
 // dashboard already runs through the client-side useI18n hook and
 // doesn't need URL-distinct versions for SEO.
 //
-// /privacy and /terms are deliberately EN-only: legal copy needs
-// professional review per locale, and serving the same English text
-// from /ru/privacy as from /privacy is a duplicate-content signal to
-// Google. Keeping them off the prefix list means /ru/privacy redirects
-// to /privacy, which matches the user's intent (read the legal terms)
-// without lying about translation status.
+// /privacy and /terms are only localized for locales that have a
+// reviewed translation of the legal copy. Serving the same English
+// text from /ru/privacy as from /privacy is a duplicate-content signal
+// to Google, so for every other locale /<locale>/privacy redirects to
+// /privacy, which matches the user's intent (read the legal terms)
+// without lying about translation status. Mirrors LEGAL_LOCALES in
+// src/lib/i18n/alternates.ts — keep them in sync.
 const LOCALIZABLE_PATHS = ["/", "/onboard", "/blog", "/login", "/signup", "/reset-password"];
+const LEGAL_PATHS = ["/privacy", "/terms"];
+const LEGAL_LOCALES: readonly string[] = ["en", "nl"];
 
 function detectLocaleFromPath(pathname: string): { locale: string; rest: string } | null {
   for (const loc of LOCALE_PREFIXES) {
@@ -53,13 +56,14 @@ function detectLocaleFromPath(pathname: string): { locale: string; rest: string 
   return null;
 }
 
-function isLocalizable(rest: string): boolean {
+function isLocalizable(rest: string, locale: string): boolean {
   // Each entry in LOCALIZABLE_PATHS matches either the exact path or
   // any sub-path under it. The "/" entry matches ONLY the exact home
   // path — not every path that starts with "/" (which is every path).
   // Without this guard, /ru/privacy would pass the "starts with /"
   // check and end up rewritten to /privacy with x-locale=ru, when it
-  // should be 308-redirected to /privacy (privacy is EN-only).
+  // should be 308-redirected to /privacy (no reviewed RU legal copy).
+  if (LEGAL_PATHS.includes(rest)) return LEGAL_LOCALES.includes(locale);
   return LOCALIZABLE_PATHS.some((p) => {
     if (p === "/") return rest === "/";
     return rest === p || rest.startsWith(`${p}/`);
@@ -177,7 +181,7 @@ export async function middleware(request: NextRequest) {
   // RU version.
   const localeMatch = detectLocaleFromPath(pathname);
   if (localeMatch) {
-    if (!isLocalizable(localeMatch.rest)) {
+    if (!isLocalizable(localeMatch.rest, localeMatch.locale)) {
       const url = request.nextUrl.clone();
       url.pathname = localeMatch.rest;
       const r = NextResponse.redirect(url);
@@ -222,7 +226,7 @@ export async function middleware(request: NextRequest) {
     : DEFAULT_LOCALE;
   if (
     resolvedLocale !== DEFAULT_LOCALE &&
-    isLocalizable(pathname) &&
+    isLocalizable(pathname, resolvedLocale) &&
     !pathname.startsWith("/api/") &&
     !pathname.startsWith("/_next") &&
     !pathname.includes(".")

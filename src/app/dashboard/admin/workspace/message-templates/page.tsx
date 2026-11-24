@@ -91,6 +91,16 @@ const COPY: Record<Locale, CopyShape> = {
       `${total} plantilla${total === 1 ? "" : "s"} en ${properties} alojamiento${properties === 1 ? "" : "s"}.`,
     openSync: "Abrir Sync",
   },
+  nl: {
+    failedToLoad: "Laden mislukt",
+    title: "Berichtsjablonen",
+    subtitle: "Alle berichtsjablonen van je accommodaties. Klik op een accommodatie om de synchronisatie-instellingen te openen, waar je de sjablonen bewerkt.",
+    loading: "Laden...",
+    empty: "Nog geen sjablonen. Open een accommodatie en voeg ze toe op het tabblad Synchronisatie-instellingen.",
+    summary: (total, properties) =>
+      `${total} ${total === 1 ? "sjabloon" : "sjablonen"} in ${properties} ${properties === 1 ? "accommodatie" : "accommodaties"}.`,
+    openSync: "Synchronisatie openen",
+  },
 };
 
 export default function AdminMessageTemplatesPage() {

@@ -118,6 +118,22 @@ const COPY: Record<Locale, CopyShape> = {
     footerPrivacy: "Privacidad",
     footerTerms: "Términos",
   },
+  nl: {
+    ogLocale: "nl_NL",
+    breadcrumbNav: "Kruimelpad",
+    homeLabel: "Home",
+    homeHref: "/nl",
+    changelogLabel: "Wijzigingen",
+    heroEyebrow: "Wat is er nieuw",
+    heroTitle: "Wijzigingen in RentTools",
+    heroIntro:
+      "Zichtbare wijzigingen, gegroepeerd per dag waarop ze live gingen. Nieuwe functies, handige verbeteringen en de bugfixes die er echt toe deden — interne refactors en dependency-updates staan in de commitlog, niet hier.",
+    kindLabels: { added: "Nieuw", improved: "Verbeterd", fixed: "Opgelost" },
+    emptyState: "Nog geen wijzigingen vastgelegd.",
+    footerHome: "Home",
+    footerPrivacy: "Privacy",
+    footerTerms: "Voorwaarden",
+  },
 };
 
 const KIND_ORDER: ChangelogKind[] = ["added", "improved", "fixed"];

@@ -66,6 +66,14 @@ const COPY: Record<Locale, CopyShape> = {
     externalTitle: "Página de estado pública",
     externalDesc: "Disponibilidad e historial de incidencias. Alojada fuera del servidor, accesible durante un despliegue.",
   },
+  nl: {
+    title: "Systeemstatus",
+    subtitle: "Interne health-endpoints van deze installatie. Gebruik ze voor een steekproef als de synchronisatie hapert of er een 5xx tussendoor is geglipt.",
+    appHealth: "Status van de app",
+    syncHealth: "Status van de kalendersynchronisatie",
+    externalTitle: "Openbare statuspagina",
+    externalDesc: "Uptime en incidentgeschiedenis, buiten de server gehost zodat de pagina bereikbaar blijft tijdens een deploy.",
+  },
 };
 
 export default function AdminStatusPage() {

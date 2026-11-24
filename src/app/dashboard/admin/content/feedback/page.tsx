@@ -125,6 +125,26 @@ const COPY: Record<Locale, CopyShape> = {
     delete: "Eliminar",
     confirmDelete: "¿Eliminar de forma permanente?",
   },
+  nl: {
+    title: "Feedback",
+    description:
+      "Berichten van bezoekers via de zwevende Feedback-knop. Spam wordt tegengehouden door een limiet van 30 seconden per IP + een honeypot.",
+    loading: "Laden...",
+    notSuperadmin: "Alleen superadmins kunnen feedback bekijken.",
+    filterAll: "Alle",
+    filterNew: "Nieuw",
+    filterRead: "Gelezen",
+    filterArchived: "Gearchiveerd",
+    refreshing: "Vernieuwen...",
+    refresh: "Vernieuwen",
+    empty: "Nog geen feedback.",
+    anonymous: "anoniem",
+    markRead: "Markeren als gelezen",
+    archive: "Archiveren",
+    restore: "Herstellen",
+    delete: "Verwijderen",
+    confirmDelete: "Definitief verwijderen?",
+  },
 };
 
 // Site-wide visitor feedback queue. Source: the floating

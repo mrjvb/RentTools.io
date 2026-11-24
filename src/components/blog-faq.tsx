@@ -14,6 +14,7 @@ const COPY: Record<Locale, CopyShape> = {
   de: { heading: "Häufige Fragen" },
   fr: { heading: "Questions fréquentes" },
   es: { heading: "Preguntas frecuentes" },
+  nl: { heading: "Veelgestelde vragen" },
 };
 
 /**

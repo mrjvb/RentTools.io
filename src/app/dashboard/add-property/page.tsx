@@ -101,6 +101,20 @@ const COPY: Record<Locale, CopyShape> = {
     creating: "Creando…",
     add: "Añadir alojamiento",
   },
+  nl: {
+    nameRequired: "Een naam voor de accommodatie is verplicht",
+    backToDashboard: "Terug naar het dashboard",
+    addProperty: "Accommodatie toevoegen",
+    propertyName: "Naam van de accommodatie",
+    propertyNameHint: "Alleen zichtbaar voor jou — gasten zien dit niet.",
+    propertyNamePlaceholder: "Strandhuisje",
+    calendarFeeds: "Kalenderfeeds",
+    calendarFeedsHint: "Optioneel — je kunt ze later toevoegen via de instellingen van de accommodatie. Airbnb en Booking.com worden ondersteund.",
+    icalExportUrl: "iCal-exportlink",
+    cancel: "Annuleren",
+    creating: "Aanmaken…",
+    add: "Accommodatie toevoegen",
+  },
 };
 
 function AddPropertyContent() {

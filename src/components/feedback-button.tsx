@@ -127,6 +127,24 @@ const COPY: Record<Locale, CopyShape> = {
     send: "Enviar",
     sending: "Enviando…",
   },
+  nl: {
+    trigger: "Feedback",
+    triggerAria: "Feedback sturen",
+    heading: "Feedback sturen",
+    subtitle: "Wat zit je dwars? Een bug, een functie die je mist of gewoon een compliment.",
+    close: "Sluiten",
+    successTitle: "Bedankt — ontvangen.",
+    successBody: "De maintainer leest elk bericht.",
+    messageLabel: "Bericht",
+    messagePlaceholder: "Wat werkt er, wat niet, wat mis je…",
+    emailLabel: "E-mail (optioneel)",
+    emailPlaceholder: "Als je een antwoord wilt",
+    networkError: "Netwerkfout",
+    couldntSend: (s) => `Versturen mislukt (${s}). Probeer het zo opnieuw.`,
+    cancel: "Annuleren",
+    send: "Versturen",
+    sending: "Versturen…",
+  },
 };
 
 type SubmitState =

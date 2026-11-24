@@ -386,6 +386,57 @@ const COPY: Record<Locale, CopyShape> = {
     verifiedSubtitle: (valid, enabled) =>
       `${valid} de ${enabled} ${enabled === 1 ? "plataforma verificada" : "plataformas verificadas"}. Lo que no se haya validado se arregla después del registro.`,
   },
+  nl: {
+    introEyebrow: "Aan de slag · Gratis voor elke accommodatie — voor altijd",
+    introTitleLead: "Richt je ",
+    introTitleAccent: "eerste accommodatie in",
+    introBody:
+      "Vink de platforms aan waar je adverteert, plak van elk de iCal-link en kopieer onze links terug. Dat kan eerst zonder account — pas aan het eind registreer je je om alles op te slaan.",
+    loading: "Laden…",
+    step1Title: "Geef je accommodatie een naam",
+    step1Subtitle: "Gewoon een label voor jezelf. Je kunt het altijd wijzigen.",
+    step1Placeholder: "Mijn eerste accommodatie",
+    step2Title: "Koppel je kalenderfeeds",
+    step2Subtitle:
+      "Vink elk platform aan dat je gebruikt — plak de iCal-link en kopieer die van ons terug. Staat je platform er niet tussen? Voeg het toe als 'Eigen platform'.",
+    addAnotherPlatform: "Nog een platform toevoegen",
+    step3Title: "Maak je account aan",
+    step3SubtitleEmpty:
+      "Je kunt je ook registreren zonder platform — voeg ze later toe via het dashboard.",
+    signinPrefix: "Voor altijd gratis, geen creditcard nodig. Heb je al een account? ",
+    signinLink: "Log in",
+    signinSuffix: ".",
+    saving: "Opslaan…",
+    saveAndCreate: "Opslaan en account aanmaken",
+    customFallback: "Eigen platform",
+    enableAria: (display) => `${display} inschakelen`,
+    customNamePlaceholder: "Naam van het platform",
+    removePlatformAria: "Dit platform verwijderen",
+    hideInstructions: (display) => `Instructies voor ${display} verbergen`,
+    showInstructions: (display) => `Instructies voor ${display} tonen`,
+    icalExportLabel: (display) => `iCal-exportlink van ${display}`,
+    invalidBadUrl: "Deze link klopt niet helemaal — controleer of hij met https:// begint",
+    invalidUnreachable:
+      "We konden deze link niet bereiken. Het platform is misschien traag — probeer het over een minuutje opnieuw.",
+    invalidNotIcal:
+      "De link werkt, maar geeft geen kalender terug. Controleer of je de iCal-export hebt gekopieerd en niet de pagina van je advertentie.",
+    invalidGeneric:
+      "We konden deze link niet controleren — je kunt toch opslaan, we blijven het na je registratie proberen.",
+    validOk: "Alles in orde — zodra je je registreert, synchroniseren we elke 10 minuten.",
+    pasteBackLabel: (display) => `Plak deze RentTools-link terug in ${display}`,
+    feedUrlPlaceholder: "De link verschijnt zodra je hierboven de naam van de accommodatie opslaat",
+    copy: "Kopiëren",
+    copied: "Gekopieerd!",
+    feedHelp:
+      "Deze link blijft voor altijd van jou — ook na je registratie. Hij levert live gegevens zodra je je registratie hebt afgerond.",
+    testTesting: "Controleren…",
+    testValid: "Gecontroleerd",
+    testRetry: "Opnieuw proberen",
+    testFresh: "Testen",
+    changeColor: "Kleur wijzigen",
+    verifiedSubtitle: (valid, enabled) =>
+      `${valid} van ${enabled} ${enabled === 1 ? "platform gecontroleerd" : "platforms gecontroleerd"}. Wat nog niet gecontroleerd is, kun je na je registratie oplossen.`,
+  },
 };
 
 /* ────────────────────────────────────────────────────────────────────

@@ -111,6 +111,18 @@ const COPY: Record<Locale, CopyShape> = {
     noEntries: "Aún no hay entradas. Aparecerán tras el primer sync.",
     global: "global",
   },
+  nl: {
+    failedToLoad: "Laden mislukt",
+    dateLocale: "nl-NL",
+    title: "Synchronisatielogs",
+    subtitle: "Chronologisch overzicht van synchronisaties over al je accommodaties. Laatste 200 regels.",
+    all: "Alle",
+    issuesOnly: "Alleen problemen",
+    loading: "Laden...",
+    noIssues: "Geen problemen — elke synchronisatie is goed afgerond.",
+    noEntries: "Nog geen logregels. Ze verschijnen na de eerste synchronisatie.",
+    global: "globaal",
+  },
 };
 
 export default function AdminSyncLogsPage() {
